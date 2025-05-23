@@ -1,3 +1,11 @@
+import { Candidate } from '../interfaces/Candidate.interface';
+
+export async function fetchNextCandidate(): Promise<Candidate | null> {
+  const res = await fetch('/api/candidates/next');
+  if (!res.ok) return null;
+  return res.json();
+}
+
 const searchGithub = async () => {
   try {
     const start = Math.floor(Math.random() * 100000000) + 1;
